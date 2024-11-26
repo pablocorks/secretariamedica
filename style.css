@@ -1,7 +1,7 @@
 /* Definindo o estilo global */
 body {
   font-family: Arial, sans-serif; /* Fonte do texto */
-  background-color: #f5deb3; /* Cor de fundo bege claro */
+  background-color: #f2dfd3; /* Cor de fundo bege claro */
   color: #5a3d2b; /* Cor do texto marrom escuro */
   margin: 0; /* Remove as margens padrão */
   display: flex; /* Usando Flexbox */
@@ -40,11 +40,11 @@ input {
 
 /* Estilo para os botões */
 button {
-  background-color: white; /* Cor de fundo do botão */
-  color: #5a3d2b; /* Cor do texto marrom escuro */
-  border: 2px solid #5a3d2b; /* Borda marrom escura */
+  background-color: #5a3d2b; /* Cor de fundo do botão */
+  color: white; /* Cor do texto marrom escuro */
+  border: 2px solid white; /* Borda marrom escura */
   padding: 20px; /* Grande espaçamento interno */
-  font-size: 25px; /* Texto grande no botão */
+  font-size: 30px; /* Texto grande no botão */
   cursor: pointer; /* Alteração do cursor para mãozinha */
   border-radius: 5px; /* Bordas arredondadas */
   width: 90%; /* Largura do botão de 90% da tela */
@@ -66,7 +66,7 @@ button:hover {
   }
 
   input {
-    font-size: 18px; /* Ajusta o tamanho da fonte para campos de entrada */
+    font-size: 40px; /* Ajusta o tamanho da fonte para campos de entrada */
   }
 
   h1 {
