@@ -35,3 +35,11 @@ button {
 button:hover {
   background-color: #e6d5b8; /* Altera a cor de fundo do botão quando o mouse passa por cima */
 }
+
+/* Media Query para telas pequenas (como dispositivos móveis) */
+@media (max-width: 600px) {
+  button {
+    width: 90%; /* Define a largura do botão como 90% da largura da tela */
+    font-size: 30px; /* Ajusta o tamanho da fonte para ficar mais proporcional em telas menores */
+  }
+}
