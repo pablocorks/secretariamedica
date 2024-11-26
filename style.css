@@ -17,7 +17,7 @@ h1 {
 .container {
   display: flex; /* Usa o modelo Flexbox para organizar os elementos dentro do contêiner */
   flex-direction: column; /* Organiza os itens em uma coluna (vertical) */
-  gap: 50px; /* Define o espaçamento de 10px entre os elementos dentro do contêiner */
+  gap: 20px; /* Define o espaçamento de 20px entre os elementos dentro do contêiner */
   align-items: center; /* Centraliza os itens horizontalmente dentro do contêiner */
 }
 
@@ -29,7 +29,7 @@ button {
   font-size: 40px; /* Define o tamanho da fonte do texto dentro do botão */
   cursor: pointer; /* Altera o cursor para uma mãozinha quando o mouse passa sobre o botão */
   border-radius: 5px; /* Arredonda as bordas do botão com um raio de 5px */
-  width: 500px; /* Define a largura do botão como 200px */
+  width: 500px; /* Define a largura do botão como 500px */
 }
 
 button:hover {
