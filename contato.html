@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contato com a Secretária</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- Incluindo a biblioteca para gerar o QR Code -->
 </head>
 <body>
   <div class="container">
@@ -15,20 +14,10 @@
     <!-- Exibindo o número de telefone da secretária -->
     <p><strong>Telefone da Secretária:</strong> (31) 99719-3532</p>
 
-    <!-- Exibindo o QR Code -->
-    <div id="qrcode" style="margin: 20px;"></div>
-
-    <script>
-      // Gerando o QR Code que redireciona para o WhatsApp da secretária
-      const telefoneSecretaria = "(31) 99719-3532";
-      const urlWhatsApp = `https://wa.me/55${telefoneSecretaria.replace(/\D/g, '')}`;
-
-      // Gerando o QR Code
-      QRCode.toCanvas(document.getElementById('qrcode'), urlWhatsApp, function (error) {
-        if (error) console.error(error);
-        console.log('QR Code gerado!');
-      });
-    </script>
+    <!-- Exibindo a imagem do QR Code -->
+    <div id="qrcode" style="margin: 20px;">
+      <img src="image.png" alt="QR Code para WhatsApp">
+    </div>
   </div>
 </body>
 </html>
