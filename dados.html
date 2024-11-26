@@ -8,15 +8,15 @@
 </head>
 <body>
   <div class="container">
-    <h1>Por favor, insira seu nome completo e seu CPF. Após clicar em OK aguarde ser chamado pelo nome. O atendimento é feito por ordem de marcação e não por ordem de chegada.</h1>
+    <h1>Por favor, insira seu primeiro e último nome e os 3 primeiros dígitos do CPF. Após clicar em OK aguarde ser chamado pelo nome. O atendimento é feito por ordem de marcação e não por ordem de chegada.</h1>
     <form id="formularioChegada">
-      <label for="nome">Nome Completo:</label>
+      <label for="nome">PRIMEIRO E ÚLTIMO NOME:</label>
       <input type="text" id="nome" required><br>
 
-      <label for="cpf">CPF:</label>
+      <label for="cpf">3 PRIMEIROS DÍGITOS DO CPF:</label>
       <input type="text" id="cpf" required onkeydown="onlyNumbers(event)"><br>
       
-      <span id="cpfError" style="color: red; display: none;">O CPF deve conter exatamente 11 dígitos numéricos.</span><br>
+      <span id="cpfError" style="color: red; display: none;">DIGITE OS 3 PRIMEIROS DÍGITOS DO CPF</span><br>
       
       <button type="submit">OK</button>
     </form>
@@ -41,9 +41,9 @@
       const cpf = document.getElementById("cpf").value;
       const horaChegada = new Date().toLocaleString(); // Hora atual da chegada
 
-      // Verifica se o CPF tem exatamente 11 dígitos
-      if (cpf.length !== 11) {
-        // Exibe a mensagem de erro se o CPF não tiver 11 dígitos
+      // Verifica se o CPF tem exatamente 3 dígitos
+      if (cpf.length !== 3) {
+        // Exibe a mensagem de erro se o CPF não tiver 3 dígitos
         document.getElementById("cpfError").style.display = "inline";
         return; // Impede o envio do formulário
       }
