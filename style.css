@@ -1,45 +1,75 @@
+/* Definindo o estilo global */
 body {
-  font-family: Arial, sans-serif; /* Define a fonte do texto para Arial ou uma fonte padrão sem serifa */
-  background-color: #f5deb3; /* Define a cor de fundo como bege */
-  color: #5a3d2b; /* Define a cor do texto como marrom escuro */
-  display: flex; /* Usa o modelo Flexbox para organizar o layout */
-  flex-direction: column; /* Organiza os elementos em uma coluna (vertical) */
-  align-items: center; /* Centraliza os itens horizontalmente dentro do contêiner */
-  justify-content: center; /* Centraliza os itens verticalmente dentro do contêiner */
-  height: 100vh; /* Define a altura do corpo como 100% da altura da janela de visualização */
-  margin: 0; /* Remove a margem padrão do corpo */
+  font-family: Arial, sans-serif; /* Fonte do texto */
+  background-color: #f5deb3; /* Cor de fundo bege claro */
+  color: #5a3d2b; /* Cor do texto marrom escuro */
+  margin: 0; /* Remove as margens padrão */
+  display: flex; /* Usando Flexbox */
+  flex-direction: column; /* Alinhamento dos elementos em coluna */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  justify-content: center; /* Centraliza os itens verticalmente */
+  height: 100vh; /* Altura total da tela */
+  width: 100%; /* Largura total da tela */
 }
 
+/* Estilo do título */
 h1 {
-  margin-bottom: 50px; /* Adiciona uma margem de 20px abaixo do título */
+  font-size: 40px; /* Tamanho grande do texto */
+  margin-bottom: 50px; /* Espaçamento abaixo do título */
+  text-align: center; /* Alinha o título no centro */
 }
 
+/* Estilo para o container principal */
 .container {
-  display: flex; /* Usa o modelo Flexbox para organizar os elementos dentro do contêiner */
-  flex-direction: column; /* Organiza os itens em uma coluna (vertical) */
-  gap: 20px; /* Define o espaçamento de 20px entre os elementos dentro do contêiner */
-  align-items: center; /* Centraliza os itens horizontalmente dentro do contêiner */
+  width: 90%; /* Largura de 90% da tela */
+  display: flex; /* Usando Flexbox */
+  flex-direction: column; /* Organiza os itens em uma coluna */
+  gap: 30px; /* Espaçamento entre os itens */
+  align-items: center; /* Centraliza os itens horizontalmente */
 }
 
+/* Estilo para os campos de entrada */
+input {
+  width: 90%; /* Largura de 90% da tela */
+  padding: 20px; /* Grande espaçamento interno */
+  font-size: 20px; /* Tamanho de fonte grande */
+  border: 2px solid #5a3d2b; /* Borda marrom escura */
+  border-radius: 5px; /* Bordas arredondadas */
+  margin-bottom: 20px; /* Espaçamento abaixo dos campos */
+}
+
+/* Estilo para os botões */
 button {
-  background-color: white; /* Define a cor de fundo do botão como branca */
-  color: #5a3d2b; /* Define a cor do texto do botão como marrom escuro */
-  border: 2px solid #5a3d2b; /* Define uma borda de 2px de cor marrom escuro */
-  padding: 10px 20px; /* Adiciona 10px de padding vertical e 20px de padding horizontal ao botão */
-  font-size: 40px; /* Define o tamanho da fonte do texto dentro do botão */
-  cursor: pointer; /* Altera o cursor para uma mãozinha quando o mouse passa sobre o botão */
-  border-radius: 5px; /* Arredonda as bordas do botão com um raio de 5px */
-  width: 500px; /* Define a largura do botão como 500px */
+  background-color: white; /* Cor de fundo do botão */
+  color: #5a3d2b; /* Cor do texto marrom escuro */
+  border: 2px solid #5a3d2b; /* Borda marrom escura */
+  padding: 20px; /* Grande espaçamento interno */
+  font-size: 25px; /* Texto grande no botão */
+  cursor: pointer; /* Alteração do cursor para mãozinha */
+  border-radius: 5px; /* Bordas arredondadas */
+  width: 90%; /* Largura do botão de 90% da tela */
+  margin-bottom: 20px; /* Distância entre os botões */
 }
 
 button:hover {
-  background-color: #e6d5b8; /* Altera a cor de fundo do botão quando o mouse passa por cima */
+  background-color: #e6d5b8; /* Cor de fundo quando o mouse passa por cima */
 }
 
 /* Media Query para telas pequenas (como dispositivos móveis) */
 @media (max-width: 600px) {
+  body {
+    justify-content: flex-start; /* Alinha o conteúdo no topo da tela em telas pequenas */
+  }
+
   button {
-    width: 90%; /* Define a largura do botão como 90% da largura da tela */
-    font-size: 30px; /* Ajusta o tamanho da fonte para ficar mais proporcional em telas menores */
+    font-size: 20px; /* Ajusta o tamanho da fonte para telas pequenas */
+  }
+
+  input {
+    font-size: 18px; /* Ajusta o tamanho da fonte para campos de entrada */
+  }
+
+  h1 {
+    font-size: 30px; /* Ajusta o tamanho do título */
   }
 }
