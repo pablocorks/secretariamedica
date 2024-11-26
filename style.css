@@ -24,7 +24,7 @@ h1 {
   width: 90%; /* Largura de 90% da tela */
   display: flex; /* Usando Flexbox */
   flex-direction: column; /* Organiza os itens em uma coluna */
-  gap: 30px; /* Espaçamento entre os itens */
+  gap: 10px; /* Espaçamento entre os itens */
   align-items: center; /* Centraliza os itens horizontalmente */
 }
 
