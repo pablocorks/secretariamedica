@@ -16,8 +16,9 @@ h1 {
 
 .container {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: column;  /* Mantém os botões na vertical */
+  gap: 10px;               /* Define o espaçamento entre os botões */
+  align-items: center;     /* Centraliza os botões horizontalmente */
 }
 
 button {
@@ -28,6 +29,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+  width: 200px; /* Definindo uma largura fixa para os botões, para manter a uniformidade */
 }
 
 button:hover {
