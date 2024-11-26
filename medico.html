@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página do Médico</title>
+  <style>
+    body {
+      background-color: #F5F5DC; /* Fundo bege */
+      font-family: Arial, sans-serif; /* Fonte Arial */
+    }
+    h1 {
+      color: #6F4F28; /* Cor marrom escuro */
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #F2F2F2;
+    }
+    tr:nth-child(even) {
+      background-color: #F9F9F9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Pacientes Confirmados</h1>
+  <table id="tabelaPacientes">
+    <thead>
+      <tr>
+        <th>Nome Completo</th>
+        <th>CPF</th>
+        <th>Hora de Chegada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Os pacientes serão carregados aqui dinamicamente -->
+    </tbody>
+  </table>
+
+  <script>
+    // Função para carregar os pacientes e preencher a tabela
+    function carregarPacientes() {
+      let pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
+      const tabelaBody = document.querySelector("#tabelaPacientes tbody");
+      tabelaBody.innerHTML = ""; // Limpa a tabela antes de adicionar novos dados
+
+      // Preenche a tabela com os pacientes
+      pacientes.forEach(paciente => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${paciente.nome}</td>
+          <td>${paciente.cpf}</td>
+          <td>${paciente.horaChegada}</td>
+        `;
+        tabelaBody.appendChild(tr);
+      });
+    }
+
+    // Detecta mudanças no localStorage e atualiza a tabela
+    window.addEventListener("storage", function(event) {
+      if (event.key === "pacientes") { // Só atualiza se a chave for "pacientes"
+        carregarPacientes(); // Recarrega a lista de pacientes
+      }
+    });
+
+    // Carregar os pacientes ao abrir a página
+    window.onload = carregarPacientes;
+  </script>
+</body>
+</html>
