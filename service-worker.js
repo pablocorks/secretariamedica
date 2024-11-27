@@ -4,7 +4,10 @@ const urlsToCache = [
   "/index.html",
   "/style.css",
   "/app.js",
-  "/manifest.json"
+  "/manifest.json",
+  "/icon-192x192.png",
+  "/icon-512x512.png",
+  "/offline.html" // Adicionando página de erro offline, se necessário
 ];
 
 // Instalar o Service Worker
