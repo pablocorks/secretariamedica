@@ -34,16 +34,15 @@
   <script>
     // Função para permitir apenas números no campo CPF
     function onlyNumbers(event) {
-      const key = event.key; // Obtém a tecla pressionada
-      // Permite as teclas: números (0-9), backspace, delete, seta para a esquerda/direita
+      const key = event.key;
       if (!/[\d]/.test(key) && key !== "Backspace" && key !== "Delete" && key !== "ArrowLeft" && key !== "ArrowRight") {
-        event.preventDefault(); // Bloqueia a entrada se não for número
+        event.preventDefault();
       }
     }
 
     // Função para lidar com o envio dos dados
     document.getElementById("formularioChegada").addEventListener("submit", function(event) {
-      event.preventDefault();
+      event.preventDefault();  // Impede o comportamento padrão do formulário (não recarregar a página)
 
       const nome = document.getElementById("nome").value;
       const cpf = document.getElementById("cpf").value;
@@ -56,21 +55,25 @@
 
       document.getElementById("cpfError").style.display = "none";
 
-      // Envia os dados para o servidor
+      // Envia os dados para o servidor com uma requisição POST
       fetch('http://localhost:3000/api/adicionarPaciente', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, cpf, horaChegada })
+        method: 'POST',  // Especifica que é uma requisição POST
+        headers: {
+          'Content-Type': 'application/json'  // Define o tipo de conteúdo como JSON
+        },
+        body: JSON.stringify({ nome, cpf, horaChegada })  // Envia os dados como JSON
       })
-      .then(response => response.json())
+      .then(response => response.json())  // Aguarda a resposta do servidor em formato JSON
       .then(data => {
-        document.getElementById("agradecimentoMessage").style.display = "block";
+        console.log('Dados recebidos do servidor:', data);  // Exibe a resposta no console
+        document.getElementById("agradecimentoMessage").style.display = "block";  // Exibe a mensagem de agradecimento
+
         setTimeout(function() {
-          window.location.href = "paciente.html"; // Redireciona
+          window.location.href = "paciente.html";  // Redireciona para a página do paciente
         }, 2000);
       })
       .catch(error => {
-        console.error('Erro ao enviar dados:', error);
+        console.error('Erro ao enviar dados:', error);  // Exibe erros no console, se houver
       });
     });
 
