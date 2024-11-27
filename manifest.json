@@ -1,10 +1,12 @@
 {
   "name": "Secretaria Médica",
   "short_name": "Secretaria",
-  "start_url": "/index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f5deb3",
   "theme_color": "#5a3d2b",
+  "orientation": "portrait", 
+  "scope": "/",
   "icons": [
     {
       "src": "icon-192x192.png",
@@ -14,6 +16,16 @@
     {
       "src": "icon-512x512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-96x96.png",
+      "sizes": "96x96",
       "type": "image/png"
     }
   ]
