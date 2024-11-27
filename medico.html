@@ -28,24 +28,6 @@
     tr:nth-child(even) {
       background-color: #F9F9F9;
     }
-    button {
-      background-color: #FF6347; /* Cor vermelha */
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #e53e31; /* Cor do botão ao passar o mouse */
-    }
-    .button-container {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .button-container button {
-      margin: 0 10px;
-    }
   </style>
 </head>
 <body>
@@ -56,7 +38,6 @@
         <th>Nome Completo</th>
         <th>CPF</th>
         <th>Hora de Chegada</th>
-        <th>Ação</th> <!-- Coluna de ação para o botão de apagar -->
       </tr>
     </thead>
     <tbody>
@@ -64,48 +45,29 @@
     </tbody>
   </table>
 
-  <!-- Botões de navegação -->
-  <div class="button-container">
-    <button onclick="window.location.href='index.html'">PÁGINA INICIAL</button>
-    <button onclick="window.location.href='paciente.html'">PÁGINA DO PACIENTE</button>
-  </div>
-
   <script>
     // Função para carregar os pacientes e preencher a tabela
     function carregarPacientes() {
-      let pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
-      const tabelaBody = document.querySelector("#tabelaPacientes tbody");
-      tabelaBody.innerHTML = ""; // Limpa a tabela antes de adicionar novos dados
+      fetch('http://localhost:3000/api/getPacientes')
+        .then(response => response.json())
+        .then(pacientes => {
+          const tabelaBody = document.querySelector("#tabelaPacientes tbody");
+          tabelaBody.innerHTML = ""; // Limpa a tabela antes de adicionar novos dados
 
-      // Preenche a tabela com os pacientes
-      pacientes.forEach((paciente, index) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${paciente.nome}</td>
-          <td>${paciente.cpf}</td>
-          <td>${paciente.horaChegada}</td>
-          <td><button onclick="apagarPaciente(${index})">Apagar</button></td> <!-- Botão de apagar -->
-        `;
-        tabelaBody.appendChild(tr);
-      });
+          pacientes.forEach(paciente => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${paciente.nome}</td>
+              <td>${paciente.cpf}</td>
+              <td>${paciente.horaChegada}</td>
+            `;
+            tabelaBody.appendChild(tr);
+          });
+        })
+        .catch(error => console.error('Erro ao carregar pacientes:', error));
     }
 
-    // Função para apagar o paciente
-    function apagarPaciente(index) {
-      let pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
-      pacientes.splice(index, 1); // Remove o paciente da lista
-      localStorage.setItem("pacientes", JSON.stringify(pacientes)); // Atualiza o localStorage
-      carregarPacientes(); // Recarrega a tabela
-    }
-
-    // Detecta mudanças no localStorage e atualiza a tabela
-    window.addEventListener("storage", function(event) {
-      if (event.key === "pacientes") { // Só atualiza se a chave for "pacientes"
-        carregarPacientes(); // Recarrega a lista de pacientes
-      }
-    });
-
-    // Carregar os pacientes ao abrir a página
+    // Carregar os pacientes quando a página for aberta
     window.onload = carregarPacientes;
   </script>
 </body>
