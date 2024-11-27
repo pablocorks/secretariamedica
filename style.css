@@ -2,6 +2,10 @@
 body {
   font-family: Arial, sans-serif; /* Fonte do texto */
   background-color: #f2dfd3; /* Cor de fundo bege claro */
+  background-image: url('./fundo.png'); /* Imagem de fundo */
+  background-size: cover; /* Ajusta o tamanho da imagem para cobrir a tela inteira */
+  background-repeat: no-repeat; /* Não repete a imagem */
+  background-position: center center; /* Centraliza a imagem */
   color: #5a3d2b; /* Cor do texto marrom escuro */
   margin: 0; /* Remove as margens padrão */
   display: flex; /* Usando Flexbox */
@@ -10,22 +14,43 @@ body {
   justify-content: center; /* Centraliza os itens verticalmente */
   height: 100vh; /* Altura total da tela */
   width: 100%; /* Largura total da tela */
+  padding: 0; /* Remove o espaçamento superior */
 }
 
 /* Estilo do título */
 h1 {
+  margin-top: 0px;
   font-size: 40px; /* Tamanho grande do texto */
-  margin-bottom: 50px; /* Espaçamento abaixo do título */
+  margin-bottom: 10px; /* Espaçamento abaixo do título */
   text-align: center; /* Alinha o título no centro */
+}
+
+h2 {
+  margin-top: 0px;
+  font-size: 30px; /* Tamanho do texto reduzido para metade do tamanho do h1 */
+  margin-bottom: 10px; /* Espaçamento abaixo do título */
+  text-align: center; /* Alinha o título no centro */
+  color: #5a3d2b; /* Cor do texto marrom escuro */
+}
+
+h3 {
+  margin-top: 0px;
+  font-size: 20px; /* Tamanho do texto reduzido para metade do tamanho do h1 */
+  margin-bottom: 10px; /* Espaçamento abaixo do título */
+  text-align: center; /* Alinha o título no centro */
+  color: #5a3d2b; /* Cor do texto marrom escuro */
 }
 
 /* Estilo para o container principal */
 .container {
+  margin-top: 150px;
   width: 90%; /* Largura de 90% da tela */
   display: flex; /* Usando Flexbox */
   flex-direction: column; /* Organiza os itens em uma coluna */
   gap: 10px; /* Espaçamento entre os itens */
   align-items: center; /* Centraliza os itens horizontalmente */
+  justify-content: center; /* Centraliza os itens verticalmente */
+  text-align: center; /* Centraliza o texto dentro do container */
 }
 
 /* Estilo para os campos de entrada */
@@ -35,7 +60,8 @@ input {
   font-size: 20px; /* Tamanho de fonte grande */
   border: 2px solid #5a3d2b; /* Borda marrom escura */
   border-radius: 5px; /* Bordas arredondadas */
-  margin-bottom: 20px; /* Espaçamento abaixo dos campos */
+  margin-bottom: 15px; /* Espaçamento abaixo dos campos */
+  text-align: center; /* Centraliza o texto digitado */
 }
 
 /* Estilo para os botões */
@@ -48,7 +74,7 @@ button {
   cursor: pointer; /* Alteração do cursor para mãozinha */
   border-radius: 5px; /* Bordas arredondadas */
   width: 90%; /* Largura do botão de 90% da tela */
-  margin-bottom: 20px; /* Distância entre os botões */
+  margin-bottom: 15px; /* Reduz a distância entre os botões */
 }
 
 button:hover {
@@ -58,7 +84,7 @@ button:hover {
 /* Media Query para telas pequenas (como dispositivos móveis) */
 @media (max-width: 600px) {
   body {
-    justify-content: flex-start; /* Alinha o conteúdo no topo da tela em telas pequenas */
+    justify-content: center; /* Centraliza os itens em telas pequenas */
   }
 
   button {
@@ -71,5 +97,6 @@ button:hover {
 
   h1 {
     font-size: 30px; /* Ajusta o tamanho do título */
+    margin-bottom: 20px; /* Ajusta o espaçamento abaixo do título */
   }
 }

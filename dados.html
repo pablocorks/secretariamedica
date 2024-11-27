@@ -8,18 +8,27 @@
 </head>
 <body>
   <div class="container">
-    <h1>Por favor, insira seu primeiro e último nome e os 3 primeiros dígitos do CPF. Após clicar em OK aguarde ser chamado pelo nome. O atendimento é feito por ordem de marcação e não por ordem de chegada.</h1>
+    <h1>Insira seu nome e os 3 primeiros dígitos do CPF.</h1>  
+    <h2>Após clicar em OK, aguarde ser chamado. O atendimento é feito por ordem de marcação.</h2>
     <form id="formularioChegada">
-      <label for="nome">PRIMEIRO E ÚLTIMO NOME:</label>
+      <label for="nome"><h3>PRIMEIRO E ÚLTIMO NOME:</h3></label>
       <input type="text" id="nome" required><br>
 
-      <label for="cpf">3 PRIMEIROS DÍGITOS DO CPF:</label>
+      <label for="cpf"><h3>3 PRIMEIROS DÍGITOS DO CPF:</h3></label>
       <input type="text" id="cpf" required onkeydown="onlyNumbers(event)"><br>
       
-      <span id="cpfError" style="color: red; display: none;">DIGITE OS 3 PRIMEIROS DÍGITOS DO CPF</span><br>
+      <span id="cpfError" style="color: red; display: none;">DIGITE APENAS OS 3 PRIMEIROS DÍGITOS DO CPF</span><br>
       
       <button type="submit">OK</button>
     </form>
+
+    <!-- Botão VOLTAR -->
+    <button onclick="voltar()" style="margin-top: 20px; padding: 10px 20px; font-size: 18px;">VOLTAR</button>
+    
+    <!-- Div para mostrar a mensagem de agradecimento -->
+    <div id="agradecimentoMessage" style="display: none; text-align: center; font-size: 18px; margin-top: 20px;">
+      <p><h1>MUITO OBRIGADO! AGORA É SÓ AGUARDAR!</h1></p>
+    </div>
   </div>
 
   <script>
@@ -64,9 +73,38 @@
       // Salvando a lista de pacientes atualizada no localStorage
       localStorage.setItem("pacientes", JSON.stringify(pacientes));
 
-      // Redireciona de volta para a página do paciente
-      window.location.href = "paciente.html"; // Retorna para a página principal
+      // Exibe a mensagem de agradecimento antes de redirecionar
+      document.getElementById("agradecimentoMessage").style.display = "block";
+
+      // Espera 2 segundos antes de redirecionar para a página paciente.html
+      setTimeout(function() {
+        window.location.href = "paciente.html"; // Retorna para a página principal
+      }, 2000); // 2000 milissegundos = 2 segundos
     });
+
+    // Função para redirecionar para a página paciente.html
+    function voltar() {
+      window.location.href = "paciente.html"; // Redireciona para a página paciente.html
+    }
+
+    // Função para redirecionar automaticamente após 10 segundos caso os campos não sejam preenchidos
+    let timeout;
+    function iniciarTimeout() {
+      timeout = setTimeout(function() {
+        window.location.href = "paciente.html"; // Redireciona para paciente.html após 10 segundos
+      }, 10000); // 10 segundos (10000 milissegundos)
+    }
+
+    // Cancelar o redirecionamento se os campos forem preenchidos a tempo
+    document.getElementById("nome").addEventListener("input", function() {
+      clearTimeout(timeout);
+    });
+    document.getElementById("cpf").addEventListener("input", function() {
+      clearTimeout(timeout);
+    });
+
+    // Iniciar o temporizador quando a página carregar
+    window.onload = iniciarTimeout;
   </script>
 </body>
 </html>

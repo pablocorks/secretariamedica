@@ -8,16 +8,28 @@
 </head>
 <body>
   <div class="container">
-    <h1>Contato com a Secretária</h1>
-    <p><strong>Se você deseja falar com a secretária, use a camera do seu celular para escanear o QR CODE abaixo e ir direto ao WhatsApp ou ligue para o número abaixo:</strong></p>
-
-    <!-- Exibindo o número de telefone da secretária -->
-    <p> <h1><strong>(31) 99719-3532</strong></h1> </p>
+    <h2>Se você deseja falar com a secretária, use a câmera do seu celular para escanear o QR CODE abaixo e ir direto ao WhatsApp ou ligue para o número abaixo:</h2>
+    <h1><strong>(31) 99719-3532</strong></h1>
 
     <!-- Exibindo a imagem do QR Code -->
     <div id="qrcode" style="margin: 20px;">
       <img src="image.png" alt="QR Code para WhatsApp">
     </div>
+
+    <!-- Botão de Voltar -->
+    <button onclick="voltar()" style="margin-top: 20px; padding: 10px 20px; font-size: 18px;">VOLTAR</button>
   </div>
+
+  <script>
+    // Função para redirecionar para a página paciente.html
+    function voltar() {
+      window.location.href = "paciente.html"; // Caminho para a página do paciente
+    }
+
+    // Função para redirecionar automaticamente após 15 segundos
+    setTimeout(function() {
+      window.location.href = "paciente.html"; // Redireciona para a página paciente.html
+    }, 15000); // 15000 milissegundos = 15 segundos
+  </script>
 </body>
 </html>
