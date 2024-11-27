@@ -34,53 +34,77 @@
   <script>
     // Função para permitir apenas números no campo CPF
     function onlyNumbers(event) {
-      const key = event.key;
+      const key = event.key; // Obtém a tecla pressionada
+      // Permite as teclas: números (0-9), backspace, delete, seta para a esquerda/direita
       if (!/[\d]/.test(key) && key !== "Backspace" && key !== "Delete" && key !== "ArrowLeft" && key !== "ArrowRight") {
-        event.preventDefault();
+        event.preventDefault(); // Bloqueia a entrada se não for número
       }
     }
 
     // Função para lidar com o envio dos dados
     document.getElementById("formularioChegada").addEventListener("submit", function(event) {
-      event.preventDefault();  // Impede o comportamento padrão do formulário (não recarregar a página)
+      event.preventDefault();
 
+      // Pegando os valores dos campos
       const nome = document.getElementById("nome").value;
       const cpf = document.getElementById("cpf").value;
       const horaChegada = new Date().toLocaleString(); // Hora atual da chegada
 
+      // Verifica se o CPF tem exatamente 3 dígitos
       if (cpf.length !== 3) {
+        // Exibe a mensagem de erro se o CPF não tiver 3 dígitos
         document.getElementById("cpfError").style.display = "inline";
-        return;
+        return; // Impede o envio do formulário
       }
 
+      // Esconde a mensagem de erro se o CPF for válido
       document.getElementById("cpfError").style.display = "none";
 
-      // Envia os dados para o servidor com uma requisição POST
-      fetch('http://localhost:3000/api/adicionarPaciente', {
-        method: 'POST',  // Especifica que é uma requisição POST
-        headers: {
-          'Content-Type': 'application/json'  // Define o tipo de conteúdo como JSON
-        },
-        body: JSON.stringify({ nome, cpf, horaChegada })  // Envia os dados como JSON
-      })
-      .then(response => response.json())  // Aguarda a resposta do servidor em formato JSON
-      .then(data => {
-        console.log('Dados recebidos do servidor:', data);  // Exibe a resposta no console
-        document.getElementById("agradecimentoMessage").style.display = "block";  // Exibe a mensagem de agradecimento
+      // Recuperando os dados antigos do localStorage
+      let pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
 
-        setTimeout(function() {
-          window.location.href = "paciente.html";  // Redireciona para a página do paciente
-        }, 2000);
-      })
-      .catch(error => {
-        console.error('Erro ao enviar dados:', error);  // Exibe erros no console, se houver
+      // Adicionando o novo paciente à lista
+      pacientes.push({
+        nome: nome,
+        cpf: cpf,
+        horaChegada: horaChegada
       });
+
+      // Salvando a lista de pacientes atualizada no localStorage
+      localStorage.setItem("pacientes", JSON.stringify(pacientes));
+
+      // Exibe a mensagem de agradecimento antes de redirecionar
+      document.getElementById("agradecimentoMessage").style.display = "block";
+
+      // Espera 2 segundos antes de redirecionar para a página paciente.html
+      setTimeout(function() {
+        window.location.href = "paciente.html"; // Retorna para a página principal
+      }, 2000); // 2000 milissegundos = 2 segundos
     });
 
-    // Função para redirecionar
+    // Função para redirecionar para a página paciente.html
     function voltar() {
-      window.location.href = "paciente.html";
+      window.location.href = "paciente.html"; // Redireciona para a página paciente.html
     }
+
+    // Função para redirecionar automaticamente após 10 segundos caso os campos não sejam preenchidos
+    let timeout;
+    function iniciarTimeout() {
+      timeout = setTimeout(function() {
+        window.location.href = "paciente.html"; // Redireciona para paciente.html após 10 segundos
+      }, 10000); // 10 segundos (10000 milissegundos)
+    }
+
+    // Cancelar o redirecionamento se os campos forem preenchidos a tempo
+    document.getElementById("nome").addEventListener("input", function() {
+      clearTimeout(timeout);
+    });
+    document.getElementById("cpf").addEventListener("input", function() {
+      clearTimeout(timeout);
+    });
+
+    // Iniciar o temporizador quando a página carregar
+    window.onload = iniciarTimeout;
   </script>
 </body>
 </html>
